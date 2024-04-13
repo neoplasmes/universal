@@ -1,17 +1,58 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import React from "react";
+import ReactDOM from "react-dom/client";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import Layout from "./layout/layout";
+import Todos from "./pages/todos";
+import "./index.css"
+import { AuthProvider, AuthorizedOnly } from "./context/authContext";
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
-);
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+const Main = () => {
+    return(
+    <BrowserRouter>
+        {/*Всему приложению теперь доступны данные авторизованного пользователя и метод их определения*/}
+        <AuthProvider >
+            <Routes>
+                {/*Домашняя страница*/}
+                <Route path="/" element={<Layout/>}>
+                    <Route index element={
+                    <p className="text-7xl">
+                        fkgkmsd;fgmd;fmadfb;adfb;ladfba
+                        fdhdfhafdh
+                        adfh
+                        adfbadf
+                        an
+                        adfnadfnadfnadfnadfnadfb
+                        defaultadfv
+                        adfbadnf
+                        adfnadfnadfnadfnadfnadfbadfbadfvb
+
+                        badf
+                        na
+                        dfn
+                        adfnadfnadfnadfnadfnadfb
+
+                        adfnadfnadfnadfnadfnadfbdfan
+                        adfnadfnadfnadfnadfnadfbfdn
+                        adfnadfnadfnadfnadfnadfbdfnafdn
+                        adfnadfnadfnadfnadfnadfbfdnafdnafdn
+                        adfnadfnadfnadfnadfnadfb
+                    </p>
+                }/>
+
+                    {/*Только для авторизованных пользователей*/}
+                    <Route element={<AuthorizedOnly />}> 
+                        {/*тудушки*/}
+                        <Route path="todos" element={<Todos/>} />
+                    </Route>
+
+                </Route>
+            </Routes>
+        </AuthProvider>
+    </BrowserRouter>
+    );
+}
+
+
+
+ReactDOM.createRoot(document.getElementById("root")).render(<Main/>);

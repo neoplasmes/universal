@@ -1,0 +1,12 @@
+{
+	"folders": [
+		{
+			"path": "."
+		},
+		{
+			"name": "express_jwt",
+			"path": "../express_jwt"
+		}
+	],
+	"settings": {}
+}
